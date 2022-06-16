@@ -60,3 +60,7 @@ Você deve criar um serviço com os seguintes requisitos:
 3. Depois que corrigirmos o desafio, te chamaremos para conversar com o time, apresentar o desafio e discutir sobre as decisões que você tomou
 4. Achamos que **1 semana** é um tempo ok para fazer o desafio, mas sabemos que nem todo mundo tem o mesmo nível de disponibilidade. Portanto, nos avise se precisar de mais tempo, ok?
 5. Boa sorte :)
+
+## Referencia:
+
+[Pagar.me Github](https://github.com/pagarme/vagas/tree/master/desafios/software-engineer-backend)
