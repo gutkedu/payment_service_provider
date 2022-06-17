@@ -2,7 +2,6 @@ import { Response, Request } from "express";
 import { container } from "tsyringe";
 import { CreateTransactionUseCase } from "./CreateTransactionUseCase";
 
-
 export class CreateTransactionController {
   async handle(request: Request, response: Response): Promise<Response> {
     const {
@@ -19,7 +18,7 @@ export class CreateTransactionController {
       CreateTransactionUseCase
     );
 
-    const transaction = createTransactionUseCase.execute({
+    const transaction = await createTransactionUseCase.execute({
       value,
       payment_method,
       description,
