@@ -36,4 +36,25 @@ export class TransactionRepository implements ITransactionRepository {
     const allTransactions = await this.repository.find();
     return allTransactions;
   }
+
+  async createObject({
+    value,
+    payment_method,
+    description,
+    card_name,
+    card_number,
+    card_cvv,
+    card_validate,
+  }: ICreateTransactionDTO): Promise<Transaction> {
+    const transaction = this.repository.create({
+      value,
+      payment_method,
+      description,
+      card_name,
+      card_number,
+      card_cvv,
+      card_validate,
+    });
+    return transaction;
+  }
 }

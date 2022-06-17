@@ -1,10 +1,19 @@
+import { ValidationError } from "class-validator";
+
 export class AppError {
   public readonly message: string;
 
   public readonly statusCode: number;
 
-  constructor(message: string, statusCode = 400) {
+  public readonly validation: ValidationError[];
+
+  constructor(
+    message: string,
+    statusCode = 400,
+    validation?: ValidationError[]
+  ) {
     this.message = message;
     this.statusCode = statusCode;
+    this.validation = validation;
   }
 }

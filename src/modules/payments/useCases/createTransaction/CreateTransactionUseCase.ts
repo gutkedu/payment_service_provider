@@ -30,22 +30,34 @@ export class CreateTransactionUseCase {
     card_validate,
     card_cvv,
   }: IRequest): Promise<Transaction> {
+    const validateTransactionObject =
+      await this.transactionRepository.createObject({
+        value,
+        payment_method,
+        description,
+        card_name,
+        card_number,
+        card_validate,
+        card_cvv,
+      });
+
+    const error = await validate(validateTransactionObject);
+
+    if (error.length > 0) {
+      console.log(error);
+      throw new AppError("Validation failed", 400, error);
+    }
+
     const transaction = await this.transactionRepository.create({
       value,
       payment_method,
       description,
       card_name,
-      card_number,
+      card_number: card_number.slice(-4),
       card_validate,
       card_cvv,
     });
 
-    const error = await validate(transaction);
-
-    if (error.length === 0) {
-      return transaction;
-    } else {
-      throw new AppError("Validation failed");
-    }
+    return transaction;
   }
 }

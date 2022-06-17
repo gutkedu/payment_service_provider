@@ -1,6 +1,13 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
-import { IsNumber, IsString } from "class-validator";
+import {
+  IsNumber,
+  IsPositive,
+  IsString,
+  Length,
+  IsIn,
+  IsAlpha,
+} from "class-validator";
 
 @Entity("transactions")
 export class Transaction {
@@ -9,10 +16,12 @@ export class Transaction {
 
   @Column()
   @IsNumber()
+  @IsPositive()
   value: number;
 
   @Column()
   @IsString()
+  @IsIn(["debit_card", "credit_card"])
   payment_method: string;
 
   @Column()
@@ -21,10 +30,12 @@ export class Transaction {
 
   @Column()
   @IsString()
+  @Length(13, 16)
   card_number: string;
 
   @Column()
   @IsString()
+  @IsAlpha()
   card_name: string;
 
   @Column()
@@ -33,6 +44,7 @@ export class Transaction {
 
   @Column()
   @IsString()
+  @Length(3, 3)
   card_cvv: string;
 
   @CreateDateColumn()
