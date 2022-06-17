@@ -33,7 +33,7 @@ export class transactionTable1655410714948 implements MigrationInterface {
           },
           {
             name: "card_validate",
-            type: "timestamp",
+            type: "varchar",
           },
           {
             name: "card_cvv",

@@ -1,5 +1,6 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
+import { IsNumber, IsString } from "class-validator";
 
 @Entity("transactions")
 export class Transaction {
@@ -7,24 +8,31 @@ export class Transaction {
   id: string;
 
   @Column()
+  @IsNumber()
   value: number;
 
   @Column()
+  @IsString()
   payment_method: string;
 
   @Column()
+  @IsString()
   description: string;
 
   @Column()
+  @IsString()
   card_number: string;
 
   @Column()
+  @IsString()
   card_name: string;
 
   @Column()
-  card_validate: Date;
+  @IsString()
+  card_validate: string;
 
   @Column()
+  @IsString()
   card_cvv: string;
 
   @CreateDateColumn()
