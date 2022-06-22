@@ -23,6 +23,9 @@ export class Payable {
   @Column()
   fee: number;
 
+  @Column()
+  transaction_id: string;
+
   @OneToOne(() => Transaction)
   @JoinColumn({ name: "transaction_id" })
   transaction: Transaction;

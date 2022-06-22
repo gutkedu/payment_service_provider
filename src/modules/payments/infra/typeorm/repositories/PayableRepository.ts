@@ -14,8 +14,14 @@ export class PayableRepository implements IPayableRepository {
     fee,
     payment_date,
     status,
+    transaction_id,
   }: ICreatePayableDTO): Promise<Payable> {
-    const payable = this.repository.create({ fee, payment_date, status });
+    const payable = this.repository.create({
+      fee,
+      payment_date,
+      status,
+      transaction_id,
+    });
     await this.repository.save(payable);
     return payable;
   }

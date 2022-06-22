@@ -18,7 +18,7 @@ export class CreateTransactionController {
       CreateTransactionUseCase
     );
 
-    const transaction = await createTransactionUseCase.execute({
+    const { transaction, payable } = await createTransactionUseCase.execute({
       value,
       payment_method,
       description,
@@ -28,6 +28,6 @@ export class CreateTransactionController {
       card_cvv,
     });
 
-    return response.status(201).json(transaction);
+    return response.status(201).json({ transaction, payable });
   }
 }
